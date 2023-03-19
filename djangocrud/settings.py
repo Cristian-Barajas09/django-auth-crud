@@ -11,8 +11,8 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+import dj_database_url 
 import os
-import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -80,12 +80,9 @@ WSGI_APPLICATION = 'djangocrud.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'default': dj_database_url.config(
-            default="postgressql://postgres:postgres@localhost/postgres",
-            conn_max_age=600
-        )
-    }
+    'default': config(
+        default='sqlite:///db.sqlite3',
+        conn_max_age=600)
 }
 
 
